@@ -1,21 +1,25 @@
 import customtkinter as ctk
 import random
+import pyfiglet
 window = ctk.CTk()
 window.geometry("600x800")
 window.title("Goony")
+art = pyfiglet.figlet_format("Goony")
 
 ctk.set_appearance_mode("system")
 
 def quit():
     window.destroy()
 
-
+art_display = ctk.CTkLabel(window, text=art, font=("", 30))
+art_display.place(anchor="center", relx=0.5,rely=0.5)
 def button_start():
+    art_display.place_forget()
     button1.configure(text="QUIT", fg_color="green", hover_color="red", command=quit)
     answer = ctk.CTkLabel(window, text="Hi, I'm Goony, and you are...", 
                           bg_color="transparent", font=("Helvetica", 20))
     answer.place(anchor="center", relx=0.5, rely=0.2)
-    user_input = ctk.CTkEntry(window, placeholder_text="Type in your name", font=("",12),
+    user_input = ctk.CTkEntry(window, placeholder_text="Type in your name", font=("",18),
                               width=200,
                               height=50,
                           fg_color="yellow", 
@@ -32,7 +36,12 @@ def button_start():
         res3 = f"Oh hello {name}, so what's your goon streak? *cough* *cough* ehm I mean, how are you?"
         res = [res1, res2, res3]
         goony_response = random.choice(res)
-        msg = ctk.CTkLabel(window, text= goony_response)
+        answer.place_forget()
+        msg = ctk.CTkLabel(window, text= goony_response, justify="center", 
+                           font=("Helvetica",22),
+                           wraplength=200)
+        msg.place(anchor="center", relx=0.5, rely=0.5)
+        send_btn.configure(state="disabled")
     send_btn = ctk.CTkButton(window, text="Send", command=send_message, font=("Helvetica", 18), 
                              border_color="black", corner_radius=20, border_width=3)
     send_btn.place(anchor="center", relx=0.8, rely=0.85)
@@ -53,6 +62,7 @@ def button_start():
                                  corner_radius=20,
                                  border_color="black")
     settings_btn.place(anchor="w", relx=0.1, rely=0.85)
+
 button1 = ctk.CTkButton(window, fg_color="red", text="Start chatting", 
                         command=button_start, corner_radius=20, border_width=3, 
                         hover_color="green", border_color="black", width=200, 
