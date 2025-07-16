@@ -1,32 +1,46 @@
-import tkinter as tk
-
-
-window = tk.Tk()
-window.geometry("600x600")
+import customtkinter as ctk
+import random
+window = ctk.CTk()
+window.geometry("600x800")
 window.title("Goony")
-window.configure(background="black")
-window.resizable(False,False)
+
+ctk.set_appearance_mode("system")
+
+def quit():
+    window.destroy()
+
+def button_start():
+    button1.configure(text="QUIT", fg_color="green", hover_color="red", command=quit)
+    answer = ctk.CTkLabel(window, text="Hi, I'm Goony, and you are...", 
+                          bg_color="transparent", font=("Helvetica", 20))
+    answer.place(anchor="center", relx=0.5, rely=0.2)
+    user_input = ctk.CTkEntry(window, placeholder_text="Type", font=("",20),
+                          fg_color="yellow", 
+                          text_color="black")
+    user_input.place(anchor="center", relx=0.5,rely=0.88)
+   
+    def send_message():
+        name = user_input.get()
+        res1 = f"Oh {name}... that's such a gooner name, just like mine!"
+        res2 = f"Hi {name}, wanna goon together? I'M KIDDING,PULL YOUR PANTS BACK UP !"
+        res3 = f"Oh hello {name}, so what's your goon streak? *cough* *cough* ehm I mean, how are you?"
+        res = [res1, res2, res3]
+        goony_response = random.choice(res)
+    send_btn = ctk.CTkButton(window, text="Send", command=send_message, font=("Helvetica", 16))
+    send_btn.place(anchor="center", relx=0.8, rely=0.88)
+
+button1 = ctk.CTkButton(window, fg_color="red", text="Start chatting", 
+                        command=button_start, corner_radius=20, border_width=2, 
+                        hover_color="green", border_color="black", width=200, 
+                        height=50, font=("Helvetica", 20))
+button1.place(anchor="center", relx=0.5, rely=0.95 )
 
 
-def first():
-    text  = "Hello world"
-    text_output = tk.Label(window, text=text, fg='red', font=('Helvetica', 16))
-    text_output.grid(row = 0, column=1)
 
-def second_function():
-    text = "Nuovo Messaggio! Nuova Funzione!"
-    text_output = tk.Label(window, text=text, fg="green", font=("Helvetica", 16))
-    text_output.grid(row=1, column=1, padx=50)
 
-first_button = tk.Button(text="chiedi", command=first)
-first_button.grid(row=0, column=0)
-
-second_button = tk.Button(text="Seconda Funzione", command=second_function)
-second_button.grid(row=1, column=0, pady=20)
 
 
 
 #get away from here
-if __name__ == "__main__":
-    window.mainloop()
+window.mainloop()
 ###
