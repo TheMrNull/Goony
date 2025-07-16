@@ -29,6 +29,7 @@ def button_start():
         res3 = f"Oh hello {name}, so what's your goon streak? *cough* *cough* ehm I mean, how are you?"
         res = [res1, res2, res3]
         goony_response = random.choice(res)
+        msg = ctk.CTkLabel(window, text= goony_response)
     send_btn = ctk.CTkButton(window, text="Send", command=send_message, font=("Helvetica", 16))
     send_btn.place(anchor="center", relx=0.8, rely=0.88)
     def settings():
