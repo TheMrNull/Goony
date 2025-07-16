@@ -19,8 +19,11 @@ def button_start():
                               width=200,
                               height=50,
                           fg_color="yellow", 
-                          text_color="black")
-    user_input.place(anchor="center", relx=0.5,rely=0.88)
+                          text_color="black",
+                              border_color="black",
+                              border_width=3,
+                              corner_radius=20)
+    user_input.place(anchor="center", relx=0.5,rely=0.85)
    
     def send_message():
         name = user_input.get()
@@ -30,20 +33,28 @@ def button_start():
         res = [res1, res2, res3]
         goony_response = random.choice(res)
         msg = ctk.CTkLabel(window, text= goony_response)
-    send_btn = ctk.CTkButton(window, text="Send", command=send_message, font=("Helvetica", 16))
-    send_btn.place(anchor="center", relx=0.8, rely=0.88)
+    send_btn = ctk.CTkButton(window, text="Send", command=send_message, font=("Helvetica", 18), 
+                             border_color="black", corner_radius=20, border_width=3)
+    send_btn.place(anchor="center", relx=0.8, rely=0.85)
     def settings():
         settings_window = ctk.CTk()
         settings_window.geometry("400x400")
         settings_window.title("Settings")
         def quit_setts():
             settings_window.destroy()
-        quit_setts_btn = ctk.CTkButton(settings_window, text="QUIT", command=quit_setts, fg_color="green", hover_color="red")
+        quit_setts_btn = ctk.CTkButton(settings_window, text="QUIT", command=quit_setts, fg_color="green", 
+                                       hover_color="red",
+                                       border_width=3,
+                                       border_color="black",
+                                       corner_radius=20)
         quit_setts_btn.place(anchor="center", relx=0.5, rely=0.88)
-    settings_btn = ctk.CTkButton(window, text="Settings", font=("Helvetica", 20), command=settings)
-    settings_btn.place(anchor="w", relx=0.1, rely=0.88)
+    settings_btn = ctk.CTkButton(window, text="Settings", font=("Helvetica", 18), command=settings,
+                                 border_width=3,
+                                 corner_radius=20,
+                                 border_color="black")
+    settings_btn.place(anchor="w", relx=0.1, rely=0.85)
 button1 = ctk.CTkButton(window, fg_color="red", text="Start chatting", 
-                        command=button_start, corner_radius=20, border_width=2, 
+                        command=button_start, corner_radius=20, border_width=3, 
                         hover_color="green", border_color="black", width=200, 
                         height=50, font=("Helvetica", 20))
 button1.place(anchor="center", relx=0.5, rely=0.95 )
