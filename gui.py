@@ -4,14 +4,14 @@ import pyfiglet
 window = ctk.CTk()
 window.geometry("600x800")
 window.title("Goony")
-art = pyfiglet.figlet_format("Goony")
+#art = pyfiglet.figlet_format("Hi")
 
 ctk.set_appearance_mode("system")
 
 def quit():
     window.destroy()
 
-art_display = ctk.CTkLabel(window, text=art, font=("", 30))
+art_display = ctk.CTkLabel(window, text="Goony", font=("", 50), width=300, height=100)
 art_display.place(anchor="center", relx=0.5,rely=0.5)
 def button_start():
     art_display.place_forget()
